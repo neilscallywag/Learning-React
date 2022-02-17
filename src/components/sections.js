@@ -93,43 +93,45 @@ function Section_forms() {
     <>
       <form>
         <div className="form_element">
-          <label htmlFor="Name">Name :</label>
           <input
             type="text"
             id="Name"
             name="Name"
+            placeholder="Name"
             value={user.Name}
             onChange={forminputHandler}></input>
         </div>
 
         <div className="form_element">
-          <label htmlFor="Email">Email :</label>
           <input
             type="text"
             id="Email"
             name="Email"
+            placeholder="Email"
             value={user.Email}
             onChange={forminputHandler}></input>
         </div>
 
         <div className="form_element">
-          <label htmlFor="Password">Password :</label>
           <input
             type="password"
             id="Password"
             name="Password"
+            placeholder="Password"
             value={user.Password}
             onChange={forminputHandler}></input>
         </div>
-        <button type="submit" onClick={formSubmitHandler}>
-          Submit
-        </button>
+        <div className="form_element">
+          <button type="submit" onClick={formSubmitHandler}>
+            Submit
+          </button>
+        </div>
       </form>
 
       {userArray.map((user, index) => {
         const { Name, Email, Password, id } = user;
         return (
-          <div key={id}>
+          <div className="util_text" key={id}>
             <h4>name : {Name} </h4>
             <h4>email: {Email} </h4>
             <h4>password: {Password}</h4>
