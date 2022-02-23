@@ -6,6 +6,7 @@ import {
   Section_photos,
   Section_buttons,
   Section_forms,
+  Section_achievements,
 } from "./components/sections";
 import "./css/style.css";
 
@@ -17,6 +18,7 @@ function App() {
       <Section_photos />
       <Section_buttons />
       <Section_forms />
+      <Section_achievements title="Test" fetchUrl="users/random_user" />
     </div>
   );
 }

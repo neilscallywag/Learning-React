@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SubmitHandler } from "./form";
+import axios from "./requests";
 
 const images = [
   {
@@ -142,4 +143,55 @@ function Section_forms() {
   );
 }
 
-export { Section_landing, Section_photos, Section_forms, Section_buttons };
+function Section_achievements({ title, fetchUrl }) {
+  const [achievements, setAchievements] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const request = await axios.get(fetchUrl);
+      var obj = request.data;
+      setAchievements({ ...achievements, obj });
+      console.log(achievements);
+      return achievements;
+    }
+    fetchData();
+  }, []);
+
+  return (
+    <div>
+      {title} <br />
+      <div>
+        {/* {achievements.map((user, index) => {
+          const {
+            id,
+            avatar,
+            dob,
+            uid,
+            username,
+            gender,
+            password,
+            phone__number,
+            email,
+          } = user;
+          return (
+            <div className="util_text" key={id}>
+              <h4>name : {username} </h4>
+              <h4>email: {email} </h4>
+              <h4>password: {password}</h4>
+              <h4>gender: {gender}</h4>
+              <img src={avatar} />
+            </div>
+          );
+        })} */}
+      </div>
+    </div>
+  );
+}
+
+export {
+  Section_landing,
+  Section_photos,
+  Section_forms,
+  Section_buttons,
+  Section_achievements,
+};
